@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->string('gpic');
-            $table->string('hpic');
+            $table->string('gpic')->nullable();
+            $table->string('hpic')->nullable();
             $table->timestamps();
         });
     }

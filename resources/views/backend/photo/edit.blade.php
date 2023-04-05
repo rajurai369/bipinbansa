@@ -19,13 +19,13 @@
 
                       <div class="form-group">
                         <label for="gpic">Historical image</label>
-                        <input id="gpic" class="form-control" type="file" name="gpic" value="{{ $image->gpic }}" >
+                        <input id="gpic" class="form-control" type="file" name="gpic" value="{{ $image->gpic }}" name="images[]" multiple >
                       </div>
 
 
                       <div class="form-group">
                         <label for="hpic">Gallery</label>
-                        <input id="hpic" class="form-control" type="file" name="hpic" value="{{ $hpic->image }}" >
+                        <input id="hpic" class="form-control" type="file" name="hpic" value="{{ $image->hpic }}" name="images[]" multiple>
                       </div>
 
 

@@ -30,7 +30,8 @@ class PostController extends Controller
         $post=new Post();
         $post->title=$request->title;
         $post->notice=$request->notice;
-        $post->phone=$request->phone;
+        $post->notice=$request->image;
+        $post->phone=$request->description;
         $post->save();
         return response()->json(['message'=>'Notice Uploaded']);
     }
@@ -59,7 +60,8 @@ class PostController extends Controller
         $post= Post::find($id);
         $post->title=$request->title;
         $post->notice=$request->notice;
-        $post->phone=$request->phone;
+        $post->notice=$request->image;
+        $post->phone=$request->description;
         $post->update();
         return response()->json(['message'=>'Notice Udated']);
     }

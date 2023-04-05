@@ -18,23 +18,23 @@
 
                       <div class="form-group">
                         <label for="mundhum_file">Mundhum_file</label>
-                        <input id="mundhum_file" class="form-control" type="file" name="mundhum_file" >
+                        <input id="mundhum_file" class="form-control" type="file" name="mundhum_file"name="images[]" multiple >
                       </div>
 
 
                       <div class="form-group">
                         <label for="bansa_File">Bansa_file</label>
-                        <input id="bansa_File" class="form-control" type="file" name="bansa_file" >
+                        <input id="bansa_File" class="form-control" type="file" name="bansa_file" name="images[]" multiple>
                       </div>
 
                       <div class="form-group">
                         <label for="helper_file">Helper_file</label>
-                        <input id="helper_file" class="form-control" type="file" name="helper_file" >
+                        <input id="helper_file" class="form-control" type="file" name="helper_file"name="images[]" multiple >
                       </div>
 
                       <div class="form-group">
                         <label for="mantab_file">Mantab_file</label>
-                        <input id="mantab_file" class="form-control" type="file" name="mantab_file" >
+                        <input id="mantab_file" class="form-control" type="file" name="mantab_file" name="images[]" multiple >
                       </div>
 
 

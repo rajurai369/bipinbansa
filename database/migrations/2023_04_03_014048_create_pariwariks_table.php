@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('pariwariks', function (Blueprint $table) {
             $table->id();
-            $table->string('subject');
-            $table->string('tasbir');
+            $table->string('subject')->nullable();
+            $table->string('tasbir')->nullable();
             $table->timestamps();
         });
     }

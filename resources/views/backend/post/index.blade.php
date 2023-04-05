@@ -21,7 +21,8 @@
                             <tr>
                                 <th>Title</th>
                                 <th>Notice</th>
-                                <th>Phone</th>
+                                <th>Image</th>
+                                <th>Description</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -32,7 +33,8 @@
                            <tr>
                             <td>{{ $post->title }}</td>
                             <td>{{ $post->notice }}</td>
-                            <td>{{ $post->phone }}</td>
+                            <td>{{ $post->image }}</td>
+                            <td>{{ $post->description }}</td>
 
                             <td>
 

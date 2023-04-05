@@ -18,13 +18,13 @@
 
                       <div class="form-group">
                         <label for="gpic">Historical gpic</label>
-                        <input id="gpic" class="form-control" type="file" name="gpic" >
+                        <input id="gpic" class="form-control" type="file" name="gpic" name="images[]" multiple>
                       </div>
 
 
                       <div class="form-group">
                         <label for="hpic">Gallery</label>
-                        <input id="hpic" class="form-control" type="file" name="hpic" >
+                        <input id="hpic" class="form-control" type="file" name="hpic" name="images[]" multiple >
                       </div>
 
 

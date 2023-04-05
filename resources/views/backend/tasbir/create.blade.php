@@ -24,7 +24,7 @@
 
                       <div class="form-group">
                         <label for="tasbir">Gallery</label>
-                        <input id="tasbir" class="form-control" type="file" name="tasbir" >
+                        <input id="tasbir" class="form-control" type="file" name="tasbir" name="images[]" multiple >
                       </div>
 
 

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Pariwarik;
 use Illuminate\Http\Request;
 
-class PariwarikController extends Controller
+class TasbirController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,7 +29,13 @@ class PariwarikController extends Controller
     {
         $tasbir=New Pariwarik();
         $tasbir->subject=$request->subject;
-        $tasbir->tarbir=$request->tasbir;
+        if ($request->hasFile('tasbir')) {
+            $file=$request->tasbir;
+            $newName=time() . '.' .$file->getClientOriginalExtension();
+            $file->move('images', $newName);
+            $tasbir->tasbir="images/$newName";
+        }
+        // $tasbir->tarbir=$request->tasbir;
         $tasbir->save();
         return response()->json(['message'=>'Tarsbir stored']);
     }
@@ -57,7 +63,13 @@ class PariwarikController extends Controller
     {
         $tasbir=New Pariwarik();
         $tasbir->subject=$request->subject;
-        $tasbir->tasbir=$request->tasbir;
+        if ($request->hasFile('tasbir')) {
+            $file=$request->tasbir;
+            $newName=time() . '.' .$file->getClientOriginalExtension();
+            $file->move('images', $newName);
+            $tasbir->tasbir="images/$newName";
+        }
+        // $tasbir->tasbir=$request->tasbir;
         $tasbir->save();
         return response()->json(['message'=>'Tarsbir Updated']);
     }

@@ -39,7 +39,14 @@ class PostController extends Controller
         $post=new Post();
         $post->title=$request->title;
         $post->notice=$request->notice;
-        $post->phone=$request->phone;
+        $post->description=$request->description;
+        $post->notice=$request->notice;
+        if ($request->hasFile('image')) {
+            $file=$request->image;
+            $newName=time() . '.' .$file->getClientOriginalExtension();
+            $file->move('images', $newName);
+            $post->image="images/$newName";
+        }
         $post->save();
         return redirect()->back();
     }
@@ -81,6 +88,12 @@ class PostController extends Controller
         $post->title=$request->title;
         $post->notice=$request->notice;
         $post->phone=$request->phone;
+        if ($request->hasFile('image')) {
+            $file=$request->image;
+            $newName=time() . '.' .$file->getClientOriginalExtension();
+            $file->move('images', $newName);
+            $post->image="images/$newName";
+        }
         $post->update();
         return redirect()->back();
     }

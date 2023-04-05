@@ -1,10 +1,13 @@
 <?php
 
-use App\Http\Controllers\Api\PariwarikController;
-use App\Http\Controllers\FileController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ImageController;
+use App\Http\Controllers\FileController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\TasbirController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,12 +24,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Auth::routes();
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('image', ImageController::class);
+Route::resource('photo', ImageController::class);
 Route::resource('file',FileController::class);
 Route::resource('post',PostController::class);
-Route::resource('/tasbir',PariwarikController::class);
+Route::resource('tasbir',TasbirController::class);
 

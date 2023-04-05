@@ -25,7 +25,7 @@
 
                       <div class="form-group">
                         <label for="tasbir">Gallery</label>
-                        <input id="tasbir" class="form-control" type="file" name="tasbir" value="{{ $tasbir->tasbir }}" >
+                        <input id="tasbir" class="form-control" type="file" name="tasbir" value="{{ $tasbir->tasbir }}" name="images[]" multiple >
                       </div>
 
 

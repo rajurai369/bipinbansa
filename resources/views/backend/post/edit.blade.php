@@ -19,19 +19,28 @@
 
                       <div class="form-group">
                         <label for="title">Title</label>
-                        <input id="title" class="form-control" type="text" name="title" value="{{ $post->hpic }}" >
+                        <input id="title" class="form-control" type="text" name="title" value="{{ $post->title }}" >
                       </div>
 
 
                       <div class="form-group">
                         <label for="notice">Notice</label>
-                        <input id="notice" class="form-control" type="file" name="notice" value="{{ $post->gpic }}" >
+                        <input id="notice" class="form-control" type="file" name="notice" value="{{ $post->notic }}" >
+                      </div>
+
+
+                      <div class="form-group">
+                        <label for="description">Description</label>
+                        <input id="description" class="form-control" type="text" name="description" value="{{ $post->description }}" >
+
                       </div>
 
                       <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input id="phone" class="form-control" type="text" name="phone" value="{{ $post->gpic }}" >
+                        <label for="image">Image</label>
+                        <input id="image" class="form-control" type="file" name="image" value="{{ $post->image }}" name="images[]" multiple >
                       </div>
+
+
 
 
          <button type="submit" class="btn btn-info">Update

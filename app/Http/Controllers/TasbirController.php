@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 // use function Ramsey\Uuid\v1;
 
-class  PariwarikController extends Controller
+class  TasbirController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,7 +42,14 @@ class  PariwarikController extends Controller
     {
         $tasbir=new Pariwarik();
         $tasbir->subject=$request->subject;
-        $tasbir->tasbir=$request->tasbir;
+        // $tasbir->tasbir=$request->tasbir;
+
+        if ($request->hasFile('tasbir')) {
+            $file=$request->tasbir;
+            $newName=time() . '.' .$file->getClientOriginalExtension();
+            $file->move('images', $newName);
+            $tasbir->tasbir="images/$newName";
+        }
         $tasbir->save();
         return redirect()->back();
     }
@@ -81,7 +88,13 @@ class  PariwarikController extends Controller
     {
         $tasbir= Pariwarik::find($id);
         $tasbir->subject=$request->subject;
-        $tasbir->tasbir=$request->tasbir;
+        // $tasbir->tasbir=$request->tasbir;
+        if ($request->hasFile('tasbir')) {
+            $file=$request->tasbir;
+            $newName=time() . '.' .$file->getClientOriginalExtension();
+            $file->move('images', $newName);
+            $tasbir->tasbir="images/$newName";
+        }
         $tasbir->update();
         return redirect()->back();
     }

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Schema\ForeignKeyDefinition;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -17,7 +18,9 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('notice');
-            $table->string('phone');
+
+            $table->string('image')->nullable();
+            $table->string('description');
             $table->timestamps();
         });
     }

@@ -28,8 +28,13 @@
                       </div>
 
                       <div class="form-group">
-                        <label for="phone">phone</label>
-                        <input id="phone" class="form-control" type="phone" name="phone" >
+                        <label for="image">image</label>
+                        <input id="image" class="form-control" type="image" name="image" name="images[]" multiple >
+                      </div>
+
+                      <div class="form-group">
+                        <label for="description">Description</label>
+                        <input id="description" class="form-control" type="description" name="description" >
                       </div>
 
 

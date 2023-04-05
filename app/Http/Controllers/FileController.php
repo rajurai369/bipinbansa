@@ -38,6 +38,25 @@ class FileController extends Controller
     public function store(Request $request)
     {
       $file=new File();
+    //   if ($request->hasFile('mundhum_file')) {
+    //     $file=$request->mundhum_file;
+    //     $newName=time() . '.' .$file->getClientOriginalExtension();
+    //     $file->move('images', $newName);
+    //     $file->mundhum_file="images/$newName";
+    // }
+    // if ($request->hasFile('bansa_file')) {
+    //     $file=$request->bansa_file;
+    //     $newName=time() . '.' .$file->getClientOriginalExtension();
+    //     $file->move('images', $newName);
+    //     $file->bansa_file="images/$newName";
+    // }
+
+    // if ($request->hasFile('helper_file')) {
+    //     $file=$request->helper_file;
+    //     $newName=time() . '.' .$file->getClientOriginalExtension();
+    //     $file->move('images', $newName);
+    //     $file->helper_file="images/$newName";
+    // }
       $file->mundhum_file=$request->mundhum_file;
       $file->bansa_file=$request->bansa_file;
       $file->mantab_file=$request->mantab_file;
@@ -79,10 +98,35 @@ class FileController extends Controller
     public function update(Request $request, $id)
     {
         $file= File::find($id);
-      $file->mundhum_file=$request->mundhum_file;
-      $file->bansa_file=$request->bansa_file;
-      $file->mantab_file=$request->mantab_file;
-      $file->helper_file=$request->helper_file;
+        if ($request->hasFile('mundhum_file')) {
+            $file=$request->mundhum_file;
+            $newName=time() . '.' .$file->getClientOriginalExtension();
+            $file->move('images', $newName);
+            $file->mundhum_file="images/$newName";
+        }
+        if ($request->hasFile('bansa_file')) {
+            $file=$request->bansa_file;
+            $newName=time() . '.' .$file->getClientOriginalExtension();
+            $file->move('images', $newName);
+            $file->bansa_file="images/$newName";
+        }
+
+        if ($request->hasFile('helper_file')) {
+            $file=$request->helper_file;
+            $newName=time() . '.' .$file->getClientOriginalExtension();
+            $file->move('images', $newName);
+            $file->helper_file="images/$newName";
+        }
+
+
+    //   $file->mundhum_file=$request->mundhum_file;
+    //   $file->bansa_file=$request->bansa_file;
+    //   $file->mantab_file=$request->mantab_file;
+    //   $file->helper_file=$request->helper_file;
+
+
+
+
       $file->update();
       return redirect()->back();
     }

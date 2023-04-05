@@ -41,8 +41,20 @@ class ImageController extends Controller
     public function store(Request $request)
     {
         $image=new Image();
-        $image->gpic=$request->gpic;
-        $image->hpic=$request->hpic;
+        if ($request->hasFile('gpic')) {
+            $file=$request->gpic;
+            $newName=time() . '.' .$file->getClientOriginalExtension();
+            $file->move('images', $newName);
+            $image->gpic="images/$newName";
+        }
+        // $image->gpic=$request->gpic;
+        // $image->hpic=$request->hpic;
+        if ($request->hasFile('hpic')) {
+            $file=$request->hpic;
+            $newName=time() . '.' .$file->getClientOriginalExtension();
+            $file->move('images', $newName);
+            $image->image="images/$newName";
+        }
         $image->save();
         return redirect()->back();
     }
