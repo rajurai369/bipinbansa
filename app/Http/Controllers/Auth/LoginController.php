@@ -35,6 +35,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        return view("auth.login");
         $this->middleware('guest')->except('logout');
     }
 }

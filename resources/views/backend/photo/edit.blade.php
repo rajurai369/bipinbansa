@@ -2,43 +2,39 @@
 
 
 @section('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <Span class="fs-4 fw-bold">Edit</Span>
+                        <a href="/photo" class="float-end btn btn-info">Back</a>
+                    </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <Span class="fs-4 fw-bold">Edit</Span>
-                    <a href="/image" class="float-end btn btn-info">Back</a>
-                </div>
-
-                <div class="card-body">
-                    <form action="/image/{{ $image->id }}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        @method('put')
-
-                      <div class="form-group">
-                        <label for="gpic">Historical image</label>
-                        <input id="gpic" class="form-control" type="file" name="gpic" value="{{ $image->gpic }}" name="images[]" multiple >
-                      </div>
+                    <div class="card-body">
+                        <form action="/photo/{{ $photo->id }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            @method('put')
 
 
-                      <div class="form-group">
-                        <label for="hpic">Gallery</label>
-                        <input id="hpic" class="form-control" type="file" name="hpic" value="{{ $image->hpic }}" name="images[]" multiple>
-                      </div>
 
 
-         <button type="submit" class="btn btn-info">Update
+                            <div class="form-group">
+                                <label for="hpic">Gallery</label>
+                                <input id="gpic" class="form-control" type="file" name="gpic"
+                                    value="{{ $photo->gpic }}" name="photos[]" multiple>
+                            </div>
 
-         </button>
 
-                    </form>
+                            <button type="submit" class="btn btn-info">Update
 
+                            </button>
+
+                        </form>
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
 @endsection

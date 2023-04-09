@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Api\FileController;
 use App\Http\Controllers\Api\ImageController;
 use App\Http\Controllers\Api\PariwarikController;
 use App\Http\Controllers\Api\PostController;
@@ -23,7 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::apiResource('/image',ImageController::class);
-Route::apiResource('/file',FileController::class);
-Route::apiResource('/post',PostController::class);
-Route::apiResource('/tasbir',PariwarikController::class);
+Route::apiResource('/image', ImageController::class);
+Route::apiResource('/post', PostController::class);
+Route::apiResource('/tasbir', PariwarikController::class);

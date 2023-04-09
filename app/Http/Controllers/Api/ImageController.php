@@ -15,8 +15,8 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $images=Image::all();
-        return response()->json($images);
+        $photos = Image::all();
+        return response()->json($photos);
     }
 
     /**
@@ -27,25 +27,25 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        $image=new Image();
+        $photo = new Image();
         if ($request->hasFile('gpic')) {
-            $file=$request->gpic;
-            $newName=time() . '.' .$file->getClientOriginalExtension();
-            $file->move('images', $newName);
-            $image->gpic="images/$newName";
+            $file = $request->gpic;
+            $newName = time() . '.' . $file->getClientOriginalExtension();
+            $file->move('photos', $newName);
+            $photo->gpic = "photos/$newName";
         }
-        // $image->gpic=$request->gpic;
-        // $image->hpic=$request->hpic;
-        if ($request->hasFile('hpic')) {
-            $file=$request->hpic;
-            $newName=time() . '.' .$file->getClientOriginalExtension();
-            $file->move('images', $newName);
-            $image->image="images/$newName";
-        }
-        // $image->gpic=$request->gpic;
-        // $image->hpic=$request->hpic;
-        $image->save();
-        return response()->json(['message'=>'Image saved']);
+        // $photo->gpic=$request->gpic;
+        // $photo->hpic=$request->hpic;
+        // if ($request->hasFile('hpic')) {
+        //     $file = $request->hpic;
+        //     $newName = time() . '.' . $file->getClientOriginalExtension();
+        //     $file->move('photos', $newName);
+        //     $photo->photo = "photos/$newName";
+        // }
+        // $photo->gpic=$request->gpic;
+        // $photo->hpic=$request->hpic;
+        $photo->save();
+        return response()->json(['message' => 'photo saved']);
     }
 
     /**
@@ -56,8 +56,8 @@ class ImageController extends Controller
      */
     public function show($id)
     {
-        $image=Image::find($id);
-        return response()->json($image);
+        $photo = Image::find($id);
+        return response()->json($photo);
     }
 
     /**
@@ -69,25 +69,25 @@ class ImageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $image= Image::find($id);
+        $photo = Image::find($id);
         if ($request->hasFile('gpic')) {
-            $file=$request->gpic;
-            $newName=time() . '.' .$file->getClientOriginalExtension();
-            $file->move('images', $newName);
-            $image->gpic="images/$newName";
+            $file = $request->gpic;
+            $newName = time() . '.' . $file->getClientOriginalExtension();
+            $file->move('photos', $newName);
+            $photo->gpic = "photos/$newName";
         }
-        // $image->gpic=$request->gpic;
-        // $image->hpic=$request->hpic;
-        if ($request->hasFile('hpic')) {
-            $file=$request->hpic;
-            $newName=time() . '.' .$file->getClientOriginalExtension();
-            $file->move('images', $newName);
-            $image->image="images/$newName";
-        }
-        // $image->gpic=$request->gpic;
-        // $image->hpic=$request->hpic;
-        $image->update();
-        return response()->json(['message'=>'Image updated']);
+        // $photo->gpic=$request->gpic;
+        // $photo->hpic=$request->hpic;
+        // if ($request->hasFile('hpic')) {
+        //     $file = $request->hpic;
+        //     $newName = time() . '.' . $file->getClientOriginalExtension();
+        //     $file->move('photos', $newName);
+        //     $photo->photo = "photos/$newName";
+        // }
+        // $photo->gpic=$request->gpic;
+        // $photo->hpic=$request->hpic;
+        $photo->update();
+        return response()->json(['message' => 'photo updated']);
     }
 
     /**
@@ -98,8 +98,8 @@ class ImageController extends Controller
      */
     public function destroy($id)
     {
-        $image=Image::find($id);
-        $image->delete();
-        return response()->json(['message'=>'Image Deleted']);
+        $photo = Image::find($id);
+        $photo->delete();
+        return response()->json(['message' => 'photo Deleted']);
     }
 }

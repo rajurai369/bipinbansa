@@ -14,8 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $post=Post::first();
-        return view('backend.post.index',compact('post'));
+        $post = Post::first();
+        return view('backend.post.index', compact('post'));
     }
 
     /**
@@ -36,16 +36,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $post=new Post();
-        $post->title=$request->title;
-        $post->notice=$request->notice;
-        $post->description=$request->description;
-        $post->notice=$request->notice;
+        $post = new Post();
+        $post->title = $request->title;
+        $post->description = $request->description;
         if ($request->hasFile('image')) {
-            $file=$request->image;
-            $newName=time() . '.' .$file->getClientOriginalExtension();
+            $file = $request->image;
+            $newName = time() . '.' . $file->getClientOriginalExtension();
             $file->move('images', $newName);
-            $post->image="images/$newName";
+            $post->image = "images/$newName";
         }
         $post->save();
         return redirect()->back();
@@ -71,8 +69,8 @@ class PostController extends Controller
     public function edit($id)
     {
 
-        $post=Post::find($id);
-        return view('backend.post.edit',compact('post'));
+        $post = Post::find($id);
+        return view('backend.post.edit', compact('post'));
     }
 
     /**
@@ -84,15 +82,15 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $post=Post::find($id);
-        $post->title=$request->title;
-        $post->notice=$request->notice;
-        $post->phone=$request->phone;
+        $post = Post::find($id);
+        $post->title = $request->title;
+        $post->description = $request->description;
+
         if ($request->hasFile('image')) {
-            $file=$request->image;
-            $newName=time() . '.' .$file->getClientOriginalExtension();
+            $file = $request->image;
+            $newName = time() . '.' . $file->getClientOriginalExtension();
             $file->move('images', $newName);
-            $post->image="images/$newName";
+            $post->image = "images/$newName";
         }
         $post->update();
         return redirect()->back();
@@ -106,7 +104,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post=Post::find($id);
+        $post = Post::find($id);
         $post->delete();
         return redirect('/post');
     }

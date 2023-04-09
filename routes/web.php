@@ -26,10 +26,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('photo', ImageController::class);
-Route::resource('file',FileController::class);
-Route::resource('post',PostController::class);
-Route::resource('tasbir',TasbirController::class);
-
+Route::resource('post', PostController::class);
+Route::resource('tasbir', TasbirController::class);

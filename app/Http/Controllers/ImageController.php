@@ -16,10 +16,9 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $image=Image::first();
+        $photo = Image::first();
 
-        return view('backend.photo.index',compact('image'));
-
+        return view('backend.photo.index', compact('photo'));
     }
 
     /**
@@ -40,22 +39,22 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        $image=new Image();
+        $photo = new Image();
         if ($request->hasFile('gpic')) {
-            $file=$request->gpic;
-            $newName=time() . '.' .$file->getClientOriginalExtension();
-            $file->move('images', $newName);
-            $image->gpic="images/$newName";
+            $file = $request->gpic;
+            $newName = time() . '.' . $file->getClientOriginalExtension();
+            $file->move('photos', $newName);
+            $photo->gpic = "photos/$newName";
         }
-        // $image->gpic=$request->gpic;
-        // $image->hpic=$request->hpic;
-        if ($request->hasFile('hpic')) {
-            $file=$request->hpic;
-            $newName=time() . '.' .$file->getClientOriginalExtension();
-            $file->move('images', $newName);
-            $image->image="images/$newName";
-        }
-        $image->save();
+        // $photo->gpic = $request->gpic;
+        // $photo->hpic=$request->hpic;
+        // if ($request->hasFile('hpic')) {
+        //     $file = $request->hpic;
+        //     $newName = time() . '.' . $file->getClientOriginalExtension();
+        //     $file->move('photos', $newName);
+        //     $photo->photo = "photos/$newName";
+        // }
+        $photo->save();
         return redirect()->back();
     }
 
@@ -78,8 +77,8 @@ class ImageController extends Controller
      */
     public function edit($id)
     {
-        $image=Image::find($id);
-        return view('backend.photo.edit',compact('image'));
+        $photo = Image::find($id);
+        return view('backend.photo.edit', compact('photo'));
     }
 
     /**
@@ -91,10 +90,24 @@ class ImageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $image= Image::find($id);
-        $image->gpic=$request->gpic;
-        $image->hpic=$request->hpic;
-        $image->update();
+        $photo = Image::find($id);
+        if ($request->hasFile('gpic')) {
+            $file = $request->gpic;
+            $newName = time() . '.' . $file->getClientOriginalExtension();
+            $file->move('photos', $newName);
+            $photo->gpic = "photos/$newName";
+        }
+        // $photo->gpic = $request->gpic;
+        // $photo->hpic=$request->hpic;
+        // if ($request->hasFile('hpic')) {
+        //     $file = $request->hpic;
+        //     $newName = time() . '.' . $file->getClientOriginalExtension();
+        //     $file->move('photos', $newName);
+        //     $photo->photo = "photos/$newName";
+        // }
+        // $photo->gpic = $request->gpic;
+        // $photo->hpic = $request->hpic;
+        $photo->update();
         return redirect()->back();
     }
 
@@ -106,8 +119,8 @@ class ImageController extends Controller
      */
     public function destroy($id)
     {
-        $image=Image::find($id);
-        $image->delete();
-        return redirect('/image');
+        $photo = Image::find($id);
+        $photo->delete();
+        return redirect('/photo');
     }
 }
