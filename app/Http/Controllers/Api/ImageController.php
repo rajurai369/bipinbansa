@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ImageResource;
 use App\Models\Image;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class ImageController extends Controller
     public function index()
     {
         $photos = Image::all();
-        return response()->json($photos);
+        return ImageResource::collection($photos);
     }
 
     /**
