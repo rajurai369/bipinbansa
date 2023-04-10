@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts=Post::all();
+        $posts = Post::all();
         return PostResource::collection($posts);
     }
 
@@ -28,13 +28,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $post=new Post();
-        $post->title=$request->title;
-        $post->notice=$request->notice;
-        $post->notice=$request->image;
-        $post->phone=$request->description;
+        $post = new Post();
+        $post->title = $request->title;
+        $post->phone = $request->description;
+        $post->notice = $request->image;
         $post->save();
-        return response()->json(['message'=>'Notice Uploaded']);
+        return response()->json(['message' => 'Notice Uploaded']);
     }
 
     /**
@@ -45,8 +44,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post=Post::find($id);
-        return response()->json($post);
+        $post = Post::find($id);
+        return new PostResource($post);
     }
 
     /**
@@ -58,13 +57,13 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $post= Post::find($id);
-        $post->title=$request->title;
-        $post->notice=$request->notice;
-        $post->notice=$request->image;
-        $post->phone=$request->description;
+        $post = Post::find($id);
+        $post->title = $request->title;
+        $post->notice = $request->notice;
+        $post->notice = $request->image;
+        $post->phone = $request->description;
         $post->update();
-        return response()->json(['message'=>'Notice Udated']);
+        return response()->json(['message' => 'Notice Udated']);
     }
 
     /**
@@ -75,8 +74,8 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post=Post::find($id);
+        $post = Post::find($id);
         $post->delete();
-        return response()->json(['message'=>'Notice Deleted']);
+        return response()->json(['message' => 'Notice Deleted']);
     }
 }

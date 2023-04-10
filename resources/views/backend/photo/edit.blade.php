@@ -24,6 +24,10 @@
                                 <input id="gpic" class="form-control" type="file" name="gpic"
                                     value="{{ $photo->gpic }}" name="photos[]" multiple>
                             </div>
+                            <div>
+                                <h6>Previous Image</h6>
+                                <img src="{{asset($photo->gpic)}}" width="200" alt="">
+                            </div>
 
 
                             <button type="submit" class="btn btn-info">Update

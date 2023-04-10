@@ -29,22 +29,7 @@ class ImageController extends Controller
     public function store(Request $request)
     {
         $photo = new Image();
-        if ($request->hasFile('gpic')) {
-            $file = $request->gpic;
-            $newName = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('photos', $newName);
-            $photo->gpic = "photos/$newName";
-        }
-        // $photo->gpic=$request->gpic;
-        // $photo->hpic=$request->hpic;
-        // if ($request->hasFile('hpic')) {
-        //     $file = $request->hpic;
-        //     $newName = time() . '.' . $file->getClientOriginalExtension();
-        //     $file->move('photos', $newName);
-        //     $photo->photo = "photos/$newName";
-        // }
-        // $photo->gpic=$request->gpic;
-        // $photo->hpic=$request->hpic;
+        uploadImage($request, $photo, "gpic");
         $photo->save();
         return response()->json(['message' => 'photo saved']);
     }
@@ -71,12 +56,9 @@ class ImageController extends Controller
     public function update(Request $request, $id)
     {
         $photo = Image::find($id);
-        if ($request->hasFile('gpic')) {
-            $file = $request->gpic;
-            $newName = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('photos', $newName);
-            $photo->gpic = "photos/$newName";
-        }
+        uploadImage($request, $photo, "gpic");
+
+
         // $photo->gpic=$request->gpic;
         // $photo->hpic=$request->hpic;
         // if ($request->hasFile('hpic')) {
